@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Page Hive</string>
+    <string-array name="book_status_options">
+        <item>Select Status</item>
+        <item>Reading</item>
+        <item>Wishlist</item>
+        <item>Dropped</item>
+        <item>Completed</item>
+    </string-array>
+
 </resources>

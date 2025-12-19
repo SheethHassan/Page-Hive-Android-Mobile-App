@@ -76,11 +76,10 @@ public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType
             holder.itemView.setOnClickListener(v -> {
                 Intent i = new Intent(context, BookDetailActivity.class);
 
-
-                i.putExtra("book_author", authors);
-                i.putExtra("book_id", b.getId());
-                i.putExtra("book_title", volumeInfo.getTitle());
-                i.putExtra("book_description", volumeInfo.getDescription());
+                i.putExtra("bookId", b.getId());
+                i.putExtra("bookTitle", volumeInfo.getTitle());
+                i.putExtra("bookAuthor", authors);
+                i.putExtra("bookDescription", volumeInfo.getDescription());
 
 
                 if (thumbnailUrl != null) {

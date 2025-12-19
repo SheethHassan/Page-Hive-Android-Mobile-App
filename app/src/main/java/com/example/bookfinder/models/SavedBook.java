@@ -20,7 +20,7 @@ public class SavedBook {
         this.notes = notes;
         }
 
-    public String getBook_id() {return bookId;}
+    public String getBookId() {return bookId;}
     public String getTitle() { return title; }
     public String getAuthor() { return author; }
     public String getThumb() { return thumb; }
