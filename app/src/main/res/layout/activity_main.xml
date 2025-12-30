@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- FIX 1: New Horizontal LinearLayout for action buttons -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,6 +29,7 @@
                 android:backgroundTint="#D4A373"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/lora"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"/>
 
@@ -38,12 +39,13 @@
                 android:backgroundTint="#D4A373"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/lora"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"/>
 
         </LinearLayout>
 
-        <!-- Search row -->
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -54,18 +56,21 @@
                 android:hint="Search books..."
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/lora"
+                android:textStyle="bold"
                 android:layout_height="wrap_content"/>
 
             <Button
                 android:id="@+id/btnSearch"
                 android:text="Search"
                 android:backgroundTint="#D4A373"
+                android:fontFamily="@font/lora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
-        <!-- Results list -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBooks"
             android:layout_width="match_parent"

@@ -7,5 +7,10 @@
         <item>Dropped</item>
         <item>Completed</item>
     </string-array>
+    <string-array name="user_role_options">
+        <item>user</item>
+        <item>moderator</item>
+        <item>admin</item>
+    </string-array>
 
 </resources>

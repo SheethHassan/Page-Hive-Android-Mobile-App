@@ -72,12 +72,20 @@ public class BookDetailActivity extends AppCompatActivity {
             db.collection("users").document(userId)
                     .collection("saved_books").document(bookId)
                     .set(bookData)
-                    .addOnSuccessListener(unused ->
-                    Toast.makeText(BookDetailActivity.this, "Book added to library", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> {
+                    .addOnSuccessListener(unused -> { // Added opening brace here
+                        Toast.makeText(BookDetailActivity.this, "Book added to library", Toast.LENGTH_SHORT).show();
+
+                        // Navigate back to MyLibraryActivity
+                        android.content.Intent intent = new android.content.Intent(BookDetailActivity.this, MainActivity.class);
+                        // Using FLAG_ACTIVITY_CLEAR_TOP ensures you don't pile up activities
+                        intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP | android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        finish();
+                    })
+                    .addOnFailureListener(e -> {
                         Toast.makeText(BookDetailActivity.this, "Error adding book to library", Toast.LENGTH_SHORT).show();
                     });
-                });
-
-
+        });
     }
 }
+

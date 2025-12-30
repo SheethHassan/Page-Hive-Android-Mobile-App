@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -30,14 +31,17 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 dependencies {
-        // Your existing version catalog dependencies
         implementation(libs.appcompat)
         implementation(libs.material)
         implementation(libs.activity)
         implementation(libs.constraintlayout)
-        implementation(libs.firebase.auth) // You already have this from the TOML file
+        implementation(libs.firebase.auth)
+    implementation(libs.core.ktx)
         testImplementation(libs.junit)
         androidTestImplementation(libs.ext.junit)
         androidTestImplementation(libs.espresso.core)
@@ -47,9 +51,9 @@ dependencies {
         implementation("com.squareup.retrofit2:converter-gson:2.9.0")
         // Firebase BoM
         implementation(platform("com.google.firebase:firebase-bom:34.7.0"))
-        // Add Firestore dependencies
+        // Firestore dependencies
         implementation("com.google.firebase:firebase-firestore")
-        // Add Glide for image loading
+        //  Glide for image loading
         implementation(libs.glide)
 }
 

@@ -50,7 +50,6 @@ public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType
         String authors;
         if (volumeInfo != null) {
             holder.tvTitle.setText(volumeInfo.getTitle());
-            // Handle author
             if (volumeInfo.getAuthors() != null && !volumeInfo.getAuthors().isEmpty()) {
                 authors = android.text.TextUtils.join(", ", volumeInfo.getAuthors());
             } else {
@@ -60,30 +59,27 @@ public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType
             // Handle thumbnail
             ImageLinks imageLinks = volumeInfo.getImageLinks();
             if (imageLinks != null && imageLinks.getThumbnail() != null) {
-                // Correct the URL replacement
                 thumbnailUrl = imageLinks.getThumbnail().replace("http://", "https://");
             } else {
                 thumbnailUrl = null;
             }
-            // Load thumbnail using Glide
             Glide.with(context)
                     .load(thumbnailUrl)
                     .placeholder(R.drawable.ic_book_placeholder)
                     .error(R.drawable.ic_book_placeholder)
                     .into(holder.ivCover);
 
-            // Handle click event
             holder.itemView.setOnClickListener(v -> {
                 Intent i = new Intent(context, BookDetailActivity.class);
 
                 i.putExtra("bookId", b.getId());
                 i.putExtra("bookTitle", volumeInfo.getTitle());
                 i.putExtra("bookAuthor", authors);
-                i.putExtra("bookDescription", volumeInfo.getDescription());
+                i.putExtra("bookDesc", volumeInfo.getDescription());
 
 
                 if (thumbnailUrl != null) {
-                    i.putExtra("THUMB", thumbnailUrl);
+                    i.putExtra("thumb", thumbnailUrl);
                 }
 
                 context.startActivity(i);

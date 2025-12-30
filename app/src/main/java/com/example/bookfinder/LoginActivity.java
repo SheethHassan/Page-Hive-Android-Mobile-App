@@ -18,6 +18,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // Admin credentials
+    private static final String ADMIN_EMAIL = "admin";
+    private static final String ADMIN_PASSWORD = "admin123";
+
     EditText edEmail, edPassword;
     Button btnLogin;
     TextView tvGoRegister;
@@ -62,6 +66,15 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        // Check if admin credentials
+        if (email.equals(ADMIN_EMAIL) && password.equals(ADMIN_PASSWORD)) {
+            Toast.makeText(this, "Welcome, Admin!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, AdminUsersActivity.class));
+            finish();
+            return;
+        }
+
+        // Regular user login with Firebase
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 startActivity(new Intent(this, MainActivity.class));
